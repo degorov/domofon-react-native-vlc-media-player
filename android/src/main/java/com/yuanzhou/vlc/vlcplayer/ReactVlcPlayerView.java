@@ -438,6 +438,8 @@ class ReactVlcPlayerView extends TextureView implements
         if (libvlc == null)
             return;
 
+        mMediaPlayer.stop();
+
         final IVLCVout vout = mMediaPlayer.getVLCVout();
         vout.removeCallback(callback);
         vout.detachViews();
