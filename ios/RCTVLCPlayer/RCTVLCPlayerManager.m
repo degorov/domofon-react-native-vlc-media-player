@@ -8,9 +8,14 @@ RCT_EXPORT_MODULE();
 
 @synthesize bridge = _bridge;
 
+UIView* prevView;
+
 - (UIView *)view
 {
-    return [[RCTVLCPlayer alloc] initWithEventDispatcher:self.bridge.eventDispatcher];
+    if (prevView != 0) {
+        [prevView removeFromSuperview];
+    }
+    return prevView = [[RCTVLCPlayer alloc] initWithEventDispatcher:self.bridge.eventDispatcher];
 }
 
 /* Should support: onLoadStart, onLoad, and onError to stay consistent with Image */

@@ -388,9 +388,8 @@ static NSString *const playbackRate = @"rate";
 - (void)_release
 {
     if(_player){
-        [_player pause];
         [_player stop];
-        [NSThread sleepForTimeInterval:0.25f];
+        [NSThread sleepForTimeInterval:0.1f];
         _player = nil;
         _eventDispatcher = nil;
         [[NSNotificationCenter defaultCenter] removeObserver:self];
