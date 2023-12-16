@@ -390,6 +390,7 @@ static NSString *const playbackRate = @"rate";
     if(_player){
         [_player pause];
         [_player stop];
+        [NSThread sleepForTimeInterval:0.25f];
         _player = nil;
         _eventDispatcher = nil;
         [[NSNotificationCenter defaultCenter] removeObserver:self];
