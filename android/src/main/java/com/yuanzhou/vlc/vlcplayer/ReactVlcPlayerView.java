@@ -399,6 +399,7 @@ class ReactVlcPlayerView extends TextureView implements
             }
             mVideoInfo = null;
             mMediaPlayer.setMedia(m);
+            m.release();
             mMediaPlayer.setScale(0);
             if (_subtitleUri != null) {
                 mMediaPlayer.addSlave(Media.Slave.Type.Subtitle, _subtitleUri, true);
@@ -438,12 +439,11 @@ class ReactVlcPlayerView extends TextureView implements
         if (libvlc == null)
             return;
 
-        mMediaPlayer.stop();
-
         final IVLCVout vout = mMediaPlayer.getVLCVout();
         vout.removeCallback(callback);
         vout.detachViews();
         //surfaceView.removeOnLayoutChangeListener(onLayoutChangeListener);
+        mMediaPlayer.release();
         libvlc.release();
         libvlc = null;
 
